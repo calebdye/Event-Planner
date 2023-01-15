@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <a href="/logout">Logout</a> <a href="/todos">Todos</a>
+    <h1>Guests</h1>
+    <ul>
+        <% Guests.forEach( el => { %>
+                <li class='guest' data-id='<%=el._id%>'>
+                    <span class='<%= el.completed === true ? 'confirmed' : 'not'%>'><%= el.guest %> </br>Address: <%= el.address %> </br>Party Size: <%= el.num %></span>
+                    <span class='edit fa fa-edit'></span>
+                    <span class='del fa fa-trash'></span>
+                </li>
+        <% }) %>    
+        </ul>
+    
+
+        <h2><%= user.userName %> has <%= left %> guests confirmed.</h2>
+
+    <form action="/guest/createGuest" method='POST'>
+        <input type="text" placeholder="Enter Guest Name" name='guest'>
+        <input type="text" placeholder="Enter Address" name='address'>
+        <input type="number" placeholder="Enter # of Guests" name='num'>
+        <input type="submit">
+    </form>
+
+    <!-- <form action="/todos/createTodo" method='POST'>
+        <input type="text" placeholder="Enter Todo Item" name='todoItem'>
+        <input type="submit">
+    </form> -->
+    
+
+    <script src="js/main2.js"></script>
+</body>
+</html>
