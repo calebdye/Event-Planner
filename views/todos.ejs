@@ -10,25 +10,81 @@
 </head>
 <body>
     <a href="/logout">Logout</a> <a href="/guest">Guests</a>
-    <h1>Todos</h1>
-    <ul>
-    <% todos.forEach( el => { %>
-            <li class='todoItem' data-id='<%=el._id%>'>
-                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                <span class='edit fa fa-edit'></span>
-                <span class='del fa fa-trash'></span>
-            </li>
-    <% }) %>    
-    </ul>
 
-    <h2><%= user.userName %> has <%= left %> things left to do.</h2>
+    <div class="card">
+        <h2>To Do List</h2>
+        <ul>
+            <% todos.forEach( el => { %>
+                    <li class='todoItem' data-id='<%=el._id%>'>
+                        <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                        <span class='edit fa fa-edit'></span>
+                        <span class='del fa fa-trash'></span>
+                    </li>
+            <% }) %>    
+            </ul>
+        <div class="text">
+            <h2><%= user.userName %> has <%= left %> things left to do. </h2>
+        </div>
+        <form action="/todos/createTodo" method='POST'>
+            <input type="text" placeholder="Enter Todo Item" name='todoItem'>
+            <input type="submit">
+        </form>
+    </div>
 
-    <form action="/todos/createTodo" method='POST'>
-        <input type="text" placeholder="Enter Todo Item" name='todoItem'>
-        <input type="submit">
-    </form>
 
-    <a href="/logout">Logout</a>
+
+    <div class="card">
+        <h2>Vendor List</h2>
+        <ul>
+            <% vendor.forEach( el => { %>
+                    <li class='todoItem' data-id='<%=el._id%>'>
+                        <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.name %> <%= el.type %> </span>
+                        <span class='edit fa fa-edit'></span>
+                        <span class='del fa fa-trash'></span>
+                    </li>
+            <% }) %>    
+            </ul>
+        <div class="text">
+            <!-- <h2><%= user.userName %> has <%= left %> things left to do. </h2> -->
+        </div>
+        <form action="/vendors/createVendor" method='POST'>
+            <input type="text" placeholder="Enter Vendor Name" name='name'>
+            <input type="text" placeholder="Enter Vendor Address" name='address'>
+            <input type="text" placeholder="Enter Vendor Phone Number" name='number'>
+            <input type="text" placeholder="Enter Vendor Type" name='type'>
+            <input type="text" placeholder="Enter Vendor cost as total" name='cost'>
+            <input type="submit">
+        </form>
+    </div>
+
+    <div class="card">
+        <h2>Budget Tracker</h2>
+        <ul>
+            <% budget.forEach( el => { %>
+
+                <li class='todoItem' data-id='<%=el._id%>'>
+                    <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.name %> <%= el.cost %> </span>
+                    <span class='edit fa fa-edit'></span>
+                    <span class='del fa fa-trash'></span>
+                </li>
+            
+    <% }) %>       
+            </ul>
+        <div class="text">
+            <h2>Total: <%= sums %>   </h2>
+            
+            <div id="myProgress">
+                <!-- <div id='ab<%= goal %>'><%= goal %>%</div> -->
+                <div id='ab<%= goal > 100 ? 'over' : goal%>'><%= goal %>%</div>
+              </div>
+
+        </div>
+        <form action="/budget/createBudget" method='POST'>
+            <input type="text" placeholder="Enter Cost Description" name='name'>
+            <input type="number" placeholder="Enter Cost" name='cost'>
+            <input type="submit">
+        </form>
+    </div>
 
     <script src="js/main.js"></script>
 </body>

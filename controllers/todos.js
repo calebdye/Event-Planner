@@ -1,12 +1,21 @@
 const Todo = require('../models/Todo')
+const Guest = require('../models/Guest')
+const Vendor = require('../models/Vendor')
+const Budget = require('../models/Budget')
 
 module.exports = {
     getTodos: async (req,res)=>{
         console.log(req.user)
         try{
             const todoItems = await Todo.find({userId:req.user.id})
+            const vendorItems = await Vendor.find({userId:req.user.id})
+            const budgetItems = await Budget.find({userId:req.user.id})
+            const goal = await Budget.findOne({userId:req.user.id})
+            const sum = await Budget.aggregate([{$match: {userId: req.user.id}},{$group: {_id:null, sum_val:{$sum:"$cost"}}}])
+            const realSum = sum[0].sum_val
+            let goalTotal = Math.round(Math.ceil((realSum/goal.goal)*100)/10)*10
             const itemsLeft = await Todo.countDocuments({userId:req.user.id,completed: false})
-            res.render('todos.ejs', {todos: todoItems, left: itemsLeft, user: req.user})
+            res.render('todos.ejs', {todos: todoItems, goal:goalTotal, left: itemsLeft, user: req.user, vendor: vendorItems, budget: budgetItems, sums:realSum})
         }catch(err){
             console.log(err)
         }
