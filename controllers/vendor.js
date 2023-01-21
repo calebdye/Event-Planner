@@ -7,7 +7,7 @@ module.exports = {
         try{
             const vendors = await Vendor.find({userId:req.user.id})
             const itemsLeft = await Vendor.countDocuments({userId:req.user.id,completed: false})
-            // res.render('vendor.ejs', {vendors: vendors, left: itemsLeft, user: req.user})
+             res.render('vendor.ejs', {vendors: vendors, left: itemsLeft, user: req.user})
         }catch(err){
             console.log(err)
         }
@@ -16,8 +16,8 @@ module.exports = {
         try{
             await Vendor.create({name: req.body.name, completed: false, userId: req.user.id, address:req.body.address, type: req.body.type, number:req.body.number, cost:req.body.cost})
             console.log('Vendor has been added!')
-            res.redirect('/todos')//Refreshing todos because that is where this data is being pulled currently
-        }catch(err){
+            res.redirect('back');
+                }catch(err){
             console.log(err)
         }
     },

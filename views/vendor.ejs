@@ -46,38 +46,33 @@
                     <h1>Event Planner</h1>
                     <!-- cards -->    
                     <div class="card card2">
-                        <h2><a href="/guest">Guest List </a></h2>
+                        <h2><a href="/vendor">Vendor List </a></h2>
                         <ul>
-                            <% guests.forEach( el => { %>
-                                    <li class='guest' data-id='<%=el._id%>'>
-                                        <span class='<%= el.completed === true ? 'confirmed' : 'noGuest'%>'><%= el.guest %> </br>Party Size: <%= el.num %> Notes:<%= el.notes %></span>
+                            <% vendors.forEach( el => { %>
+                                    <li class='todoItem' data-id='<%=el._id%>'>
+                                        <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.name %> <%= el.type %> </span>
                                         <span class='edit fa fa-edit'></span>
                                         <span class='del fa fa-trash'></span>
                                     </li>
                             <% }) %>    
                             </ul>
-                        <div class="text">
-                            <% sumGuests.forEach( el => { %>
-                                <h2><%= user.userName %> has <%= el.sum_val %> guests confirmed.</h2>
-                                        <% }) %>  
-                        </div>
-                        <form action="/guest/createGuest" method='POST'>
-                            <input type="text" placeholder="Enter Guest Name" name='guest'>
-                            <input type="text" placeholder="Enter Address" name='address'>
-                            <input type="number" placeholder="Enter # of Guests" name='num'>
-                            <input type="text" placeholder="Notes" name='notes'></br>
-                            <input type="submit">
-                        </form>
+                            <form action="/vendors/createVendor" method='POST'>
+                                <input type="text" placeholder="Enter Vendor Name" name='name'>
+                                <input type="text" placeholder="Enter Vendor Address" name='address'>
+                                <input type="text" placeholder="Enter Vendor Phone Number" name='number'>
+                                <input type="text" placeholder="Enter Vendor Type" name='type'>
+                                <input type="text" placeholder="Enter Vendor cost as total" name='cost'> </br>
+                                <input type="submit">
+                            </form>
                     </div>
 
                     <footer>
                         <div class="footer-nav">
-                            <a href="/home" class="footer-nav-link">Home</a>
+                            <a href="/todos" class="footer-nav-link">Home</a>
                             <a href="/todos" class="footer-nav-link">To-Do's</a>
                             <a href="/vendor" class="footer-nav-link">Vendors</a>
                             <a href="/budget" class="footer-nav-link">Cost-Tracker</a>
                             <a href="/guest" class="footer-nav-link">Guest-list</a>
-
                         </div>
                         <div class="footer-coded-by">
                             <p><i class="fas fa-code"></i> by Caleb Dye &copy; 2022</p>

@@ -20,8 +20,11 @@ const GuestSchema = new mongoose.Schema({
   num: {
     type: Number,
     required: false
+  },
+  notes:{
+    type: String,
+    required: false
   }
-
 })
 
 module.exports = mongoose.model('Guest', GuestSchema)

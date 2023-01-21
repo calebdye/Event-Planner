@@ -8,8 +8,44 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
+
+<!-- Nav list -->
+
+<header>
+    <div class="conainer">
+        <nav>
+            <div class="burger-menu-icon">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-list">
+ 
+                <li class="nav-item">
+                    <a href="/logout" class="nav-link">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/todos" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/guest" class="nav-link">Guest List</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/vendor" class="nav-link">Vendor List</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a href="/budget" class="nav-link">Cost Tracker</a>
+                </li> -->
+
+            </ul>
+        </nav>
+    </div>
+</header>
+
 <body>
-    <a href="/logout">Logout</a> <a href="/guest">Guests</a>
+    <h1>Event Planner</h1>
+    <!-- cards -->
 
     <div class="card">
         <h2>To Do List</h2>
@@ -30,11 +66,11 @@
             <input type="submit">
         </form>
     </div>
-
+<hr>
 
 
     <div class="card">
-        <h2>Vendor List</h2>
+        <h2><a href="/vendors">Vendor List </a></h2>
         <ul>
             <% vendor.forEach( el => { %>
                     <li class='todoItem' data-id='<%=el._id%>'>
@@ -52,40 +88,75 @@
             <input type="text" placeholder="Enter Vendor Address" name='address'>
             <input type="text" placeholder="Enter Vendor Phone Number" name='number'>
             <input type="text" placeholder="Enter Vendor Type" name='type'>
-            <input type="text" placeholder="Enter Vendor cost as total" name='cost'>
+            <input type="text" placeholder="Enter Vendor cost as total" name='cost'> </br>
             <input type="submit">
         </form>
     </div>
-
+    <hr>
     <div class="card">
-        <h2>Budget Tracker</h2>
+        <h2>Cost Tracker</h2>
         <ul>
             <% budget.forEach( el => { %>
-
                 <li class='todoItem' data-id='<%=el._id%>'>
                     <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.name %> <%= el.cost %> </span>
                     <span class='edit fa fa-edit'></span>
                     <span class='del fa fa-trash'></span>
                 </li>
-            
     <% }) %>       
             </ul>
         <div class="text">
-            <h2>Total: <%= sums %>   </h2>
-            
-            <div id="myProgress">
-                <!-- <div id='ab<%= goal %>'><%= goal %>%</div> -->
-                <div id='ab<%= goal > 100 ? 'over' : goal%>'><%= goal %>%</div>
-              </div>
-
+            <% sum.forEach( el => { %>
+        <h2>Total Costs: $<%= el.sum_val %> </h2>
+                <% }) %>  
         </div>
         <form action="/budget/createBudget" method='POST'>
             <input type="text" placeholder="Enter Cost Description" name='name'>
-            <input type="number" placeholder="Enter Cost" name='cost'>
+            <input type="number" placeholder="Enter Cost" name='cost'> </br>
+            <input type="submit">
+        </form>
+    </div>
+    <hr>
+    <div class="card">
+        <h2><a href="/guest">Guest List </a></h2>
+        <ul>
+            <% guests.forEach( el => { %>
+                    <li class='guest' data-id='<%=el._id%>'>
+                        <span class='<%= el.completed === true ? 'confirmed' : 'noGuest'%>'><%= el.guest %> </br>Party Size: <%= el.num %></span>
+                        <span class='edit fa fa-edit'></span>
+                        <span class='del fa fa-trash'></span>
+                    </li>
+            <% }) %>    
+            </ul>
+        <div class="text">
+            <% sumGuests.forEach( el => { %>
+                <h2><%= user.userName %> has <%= el.sum_val %> guests confirmed.</h2>
+                        <% }) %>  
+        </div>
+        <form action="/guest/createGuest" method='POST'>
+            <input type="text" placeholder="Enter Guest Name" name='guest'>
+            <input type="text" placeholder="Enter Address" name='address'>
+            <input type="number" placeholder="Enter # of Guests" name='num'>
+            <input type="text" placeholder="Notes" name='notes'></br>
             <input type="submit">
         </form>
     </div>
 
+    <hr>
+
+    <footer>
+        <div class="footer-nav">
+            <a href="/todos" class="footer-nav-link">Home</a>
+            <a href="/todos" class="footer-nav-link">To-Do's</a>
+            <a href="/vendor" class="footer-nav-link">Vendors</a>
+            <a href="/budget" class="footer-nav-link">Cost-Tracker</a>
+            <a href="/guest" class="footer-nav-link">Guest-list</a>
+
+        </div>
+        <div class="footer-coded-by">
+            <p><i class="fas fa-code"></i> by Caleb Dye &copy; 2022</p>
+            <p>Built with HTML, CSS and JavaScript</p>
+        </div>
+      </footer>
     <script src="js/main.js"></script>
 </body>
 </html>

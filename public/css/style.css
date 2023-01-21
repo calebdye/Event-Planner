@@ -1,34 +1,302 @@
-h1{
-    color: rgb(38, 159, 207);
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Source+Sans+Pro&display=swap');
+
+/* Global Styles */
+
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+
 }
-.completed{
-    text-decoration: line-through;
-    color: gray;
+
+html{
+    font-family: "Share Tech Mono", monospace;
+    font-size: 12px;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    color: black;
+    background: rgb(19, 19, 19);
 }
-.not{
-    text-decoration: underline;
+
+/* a{
+    text-decoration: none;
+    color: rgb(3, 155, 155);
+} */
+
+a:hover{
+  color: rgba(249,105,14,1);
 }
-.confirmed{
-    color: green;
+
+ul{
+    list-style: none;
 }
 
 li {
-    list-style: none;
+  list-style: none;
+}
+
+p{
+    font-size: 1.4rem;
+}
+
+img{
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 2rem;
+  text-decoration: none;
+}
+
+
+h1 {
+  text-align: center;
+  color: rgba(249,105,14, 1);
+    background: linear-gradient(
+      135deg,
+      rgba(180, 180, 180,1) 0%,
+      rgb(199, 21, 169) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation-duration: 3s;
+    animation-name: slidein;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+}
+    @keyframes slidein {
+      from {
+        margin-left: 100%;
+        width: 300%;
+      }
+    
+      to {
+        margin-left: 0%;
+        width: 100%;
+      }
+}
+
+/* navigation styling */
+
+.line1 {
+  width: 15px;
+  height: 3px;
+  margin: 5px 0;
+  background: linear-gradient(
+      135deg,
+      rgba(199, 21, 169,1) 0%,
+      rgb(255,255,255) 100%
+  );
+}
+
+.line2 {
+  width: 30px;
+  height: 3px;
+  background: linear-gradient(
+      135deg,
+      rgba(199, 21, 169,1) 0%,
+      rgb(255,255,255) 100%
+  );
+}
+
+.line3 {
+  width: 15px;
+  height: 3px;
+  margin: 5px 0;
+  margin-left: 15px;
+  background: linear-gradient(
+      135deg,
+      rgba(199, 21, 169,1) 0%,
+      rgb(255,255,255) 100%
+  );
+}
+
+.burger-menu-icon{
+  cursor: pointer;
+  z-index: 999;
+  position: fixed;
+  right: 0;
+  top: 0;
+  background: rgba(55,55,55,0.5);
+  padding: 1.2rem;
+  border-radius: 0%, 0%, 0%, 40%;
+}
+
+.nav-list{
+  width: 24rem;
+  height: 100vh;
+  background-color: #222222;
+  position: fixed;
+  top: 0;
+  right: -26rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  z-index: 998;
+  transition: all 650ms ease-in-out;
+}
+
+.nav-list.active{
+  right: 0;  
+}
+
+.nav-item{
+  margin: 1.2rem 0;
+  color: black;
+}
+
+.nav-link{
+  opacity: 1;
+  font-size: 1.3rem;
+  text-transform: uppercase;  
+  color: pink;
+  letter-spacing: 1.5px;
+}
+
+nav {
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 1rem 0;
+/* border-bottom: 2px solid rgba(255, 255, 255,  .2); */
+}
+
+.toggle .line1{
+  transform: rotate(-45deg) translate(-5px, 6px) scaleX(2);
+}
+.toggle .line2{
+  opacity: 0;
+}
+
+.toggle .line3{
+  transform: rotate(45deg) translate(-5px, -6px) scaleX(2);
+  margin-left: 0px;
+}
+
+a{
+  color: black;
+}
+
+/* To do list functions */
+
+.completed{
+  text-decoration: line-through;
+  color: gray;
+}
+/* .not{
+  text-decoration: underline;
+} */
+.confirmed{
+  color: green;
+}
+
+
+/* body styling */
+
+body{
+  min-height: 100vh;
+  background: linear-gradient(
+      135deg,
+      rgba(192, 192, 192, 0.925) 0%,
+      rgba(0, 0, 0, 0.836) 100%
+  )
 }
 
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
     width: 80%;
     text-align: center;
-    height: 400px;
+    height: 50vh;
     overflow: auto;
     margin: 0 auto;
     margin-top: 30px;
-
-    
+    margin-bottom: 30px;
+    background-color: rgb(234, 177, 240);
+    padding-top: 1.3rem;
+    border: 1px solid #a4a4a4;
+    border-radius: 5px;
    }
+
+   .card2 {
+    height: 80vh; 
+    background-color: rgba(243, 72, 157, 0.911);
+   }
+
+   .card3 {
+    
+    height: 40vh;
+    background-color: rgba(255, 255, 255, 0.911);
+    padding-top: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   }
+
+   .card4 {
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+
+   }
+
+   .button {
+   width: 10rem;
+   height: 6rem;
+   padding: 1.3rem;
+   margin: 1.3rem;
+   background-color: rgb(30, 103, 240);
+   border: 1px solid #a4a4a4;
+   border-radius: 4px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-decoration: none;
+ 
+   }
+
+   .button:hover{
+    color: black;
+    background-color: rgba(249,105,14,1);
+  }
+
+
+   .card li {
+    font-size: 1.4rem;
+   }
+
+   .card h2 {
+    font-size: 2rem;
+   }
+
+   .card ul {
+    padding-top: 1.3rem;
+    padding-bottom: 1.5rem;
+   }
+
+   .card2 ul {
+    height: 400px;
+   }
+
+   hr {
+    margin: auto;
+    width: 80%;
+    display: flex;
+    flex-flow:row;
+    justify-content:center;
+    align-items:center;
+   }
+
   .text {
-    padding: 2px 3px;
+    padding-top:  3px;
+    padding-bottom: 30px;
+    margin-top: 15px;
   }
 
   ul {
@@ -37,14 +305,13 @@ li {
     height: 180px;
     overflow: auto;
   }
-
-  
   
   #myProgress {
     width: 100%;
     background-color: #ddd;
   }
   
+  /* Different classes for progress */
   #ab10 {
     width: 10%;
     height: 30px;
@@ -70,3 +337,47 @@ li {
     line-height: 30px;
     color: white;
   }
+
+
+  /* Form styling */
+
+  input {
+    border: 1px solid #a4a4a4;
+    padding: 15px 20px;
+    border-radius: 4px;
+    width: 50%; 
+    margin-bottom: 10px;
+    background: #f8f8ff;
+  }
+
+ 
+
+ 
+/* footer */
+
+footer{
+  width: 100%;
+  max-width: 70rem;
+  margin: auto;
+  padding: 2.5rem;
+  color: #8a8a8a;
+  text-align: center;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+ 
+}
+
+footer a{
+  margin: 0 0.2rem;
+  color: pink;
+}
+
+.footer-coded-by{
+  margin: 2rem 0;
+}
+
+
+
+

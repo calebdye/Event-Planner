@@ -14,12 +14,13 @@ module.exports = {
     },
     createBudget: async (req, res)=>{
         try{
-            await Budget.create({name: req.body.name, completed: false, cost:req.body.cost, userId: req.user.id, goal: 10000})
+            await Budget.create({name: req.body.name, completed: false, cost:req.body.cost, userId: req.user.id, goal:req.body.goal})
             console.log('Vendor has been added!')
             res.redirect('/todos')//Refreshing todos because that is where this data is being pulled currently
         }catch(err){
             console.log(err)
         }
+  
     },
     markComplete: async (req, res)=>{
         try{
