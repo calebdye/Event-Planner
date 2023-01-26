@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Source+Sans+Pro&display=swap');
 
-/* Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Bitter&family=Nunito&family=Roboto&family=Shadows+Into+Light&family=Source+Sans+Pro&display=swap');/* Global Styles */
 
 *,
 *::before,
@@ -18,6 +17,11 @@ html{
     scroll-behavior: smooth;
     color: black;
     background: rgb(19, 19, 19);
+}
+
+body {
+  font-family: 'Bitter', serif;
+
 }
 
 /* a{
@@ -56,20 +60,21 @@ a {
 
 h1 {
   text-align: center;
+  font-size: 2.5rem;
   color: rgba(249,105,14, 1);
     background: linear-gradient(
       135deg,
-      rgba(180, 180, 180,1) 0%,
-      rgb(199, 21, 169) 100%
+      rgb(24, 21, 199) 0%,
+      rgb(50, 23, 112) 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation-duration: 3s;
-    animation-name: slidein;
+    /* animation-duration: 2s;
+    animation-name:
     animation-iteration-count: 1;
-    animation-direction: alternate;
+    animation-direction: alternate; */
 }
-    @keyframes slidein {
+    /* @keyframes slidein {
       from {
         margin-left: 100%;
         width: 300%;
@@ -79,9 +84,12 @@ h1 {
         margin-left: 0%;
         width: 100%;
       }
-}
+} */
 
 /* navigation styling */
+.head {
+  padding-top: 1rem;
+}
 
 .line1 {
   width: 15px;
@@ -89,7 +97,7 @@ h1 {
   margin: 5px 0;
   background: linear-gradient(
       135deg,
-      rgba(199, 21, 169,1) 0%,
+      rgb(24, 21, 199) 0%,
       rgb(255,255,255) 100%
   );
 }
@@ -99,7 +107,7 @@ h1 {
   height: 3px;
   background: linear-gradient(
       135deg,
-      rgba(199, 21, 169,1) 0%,
+      rgba(24, 21, 199,1) 0%,
       rgb(255,255,255) 100%
   );
 }
@@ -111,7 +119,7 @@ h1 {
   margin-left: 15px;
   background: linear-gradient(
       135deg,
-      rgba(199, 21, 169,1) 0%,
+      rgba(24, 21, 199,1) 0%,
       rgb(255,255,255) 100%
   );
 }
@@ -231,7 +239,7 @@ body{
 
    .card3 {
     
-    height: 40vh;
+    height: 50vh;
     background-color: rgba(255, 255, 255, 0.911);
     padding-top: 1.3rem;
     display: flex;
@@ -242,9 +250,11 @@ body{
    .card4 {
     flex-direction: column;
     justify-content: space-evenly;
-    
-
    }
+
+   .edit{
+    
+  }
 
    .button {
    width: 10rem;
@@ -299,12 +309,12 @@ body{
     margin-top: 15px;
   }
 
-  ul {
+  /* ul {
     margin: 0;
     padding: 0;
     height: 180px;
     overflow: auto;
-  }
+  } */
   
   #myProgress {
     width: 100%;
@@ -359,12 +369,12 @@ footer{
   width: 100%;
   max-width: 70rem;
   margin: auto;
-  padding: 2.5rem;
+  padding-top: 2rem;
   color: #8a8a8a;
   text-align: center;
   font-size: 1.2rem;
   display: flex;
-  justify-content: space-evenly;
+  justify-content:flex-end;
   flex-direction: column;
  
 }
@@ -379,5 +389,162 @@ footer a{
 }
 
 
+.bottom {
+  position: fixed;
+  bottom: 5px;
+}
 
+
+/* test */
+
+.title {
+font-size: 2rem;
+padding-left: 36px;
+}
+
+/* Google font */
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+body {
+  background-color: rgba(0,0,0,0.1);
+}
+
+/* styling paper */
+#paper {
+  width: 90%;
+  text-align: center;
+  height: 75vh;
+  position: relative;
+  margin: 20px auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: white;
+  box-shadow: 0px 0px 5px 0px #888;
+}
+
+/* styling red vertical line */
+#paper::before {
+  content: '';
+  width: 2px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 40px;
+  background-color: rgba(255,0,0,0.6);
+}
+
+/* styling blue horizontal lines */
+#pattern {
+  height: 91%;
+  background-image: repeating-linear-gradient(white 0px, white 24px, teal 25px);
+}
+
+/* styling text content */
+#content {
+  padding-left: 56px;
+  padding-right: 16px;
+  line-height: 25px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+  max-height: 95%;
+  overflow: auto;
+}
+
+#content li{
+  padding-bottom: 2rem;
+  font-family: 'Shadows Into Light', cursive;
+
+}
+
+#content ul{
+  padding-top: 2rem;
+}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  width: 50%;
+  margin-left: 25%;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input, .form-container input {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+/* .print{
+   margin-left: 20%;  
+  border: 1px solid #a4a4a4;
+  padding: 2px; 
+  border-radius: 10px;
+  background-color: rgb(40, 183, 226);
+    width: 50px;  
+   margin-left: 48%; 
+} */
+
+.page-bottom{
+display: flex;
+justify-content: center;
+padding: 2px;
+font-size:1.5rem;
+}
+
+.log{
+  width: 80%;
+}
 

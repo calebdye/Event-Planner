@@ -49,7 +49,9 @@ module.exports = {
         try{
             await Guest.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
                 guest: req.body.todoValue,
-                address: req.body.addressValue
+                address: req.body.addressValue,
+                num: req.body.newNum,
+                notes: req.body.newNotes
             })
             console.log('Marked Complete')
             res.json('Marked Complete')

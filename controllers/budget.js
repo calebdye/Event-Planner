@@ -46,8 +46,10 @@ module.exports = {
     },
     editBudget: async (req, res)=>{
         try{
-            await Vendor.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
-                todo: req.body.vendors // Need to update -- need to try and get all edit and delete functions on the same  main.js, use css classes and seperate functions probably
+            await Budget.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
+                name: req.body.todoValue,
+                cost: req.body.cost
+                // Need to update -- need to try and get all edit and delete functions on the same  main.js, use css classes and seperate functions probably
             })
             console.log('Marked Complete')
             res.json('Marked Complete')
