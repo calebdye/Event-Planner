@@ -154,7 +154,7 @@ h1 {
   opacity: 1;
   font-size: 1.3rem;
   text-transform: uppercase;  
-  color: rgba(24, 21, 199,1);
+  color: rgb(75, 138, 255);
   letter-spacing: 1.5px;
 }
 
@@ -239,6 +239,11 @@ a{
    text-decoration: none;
  
    }
+
+   .but {
+    background-color: rgb(30, 103, 240);
+
+    }
 
    .button:hover{
     color: black;
