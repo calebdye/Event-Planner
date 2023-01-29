@@ -59,7 +59,7 @@
                                         <li class='todoItem' data-id='<%=el._id%>'>
                                             <span class='<%= el.completed === true ? 'completed' : 'not'%>'>To Do:<%= el.todo %> <br> Notes:<%= el.note %> </span>
                                             <br>
-                                            <span class='fa fa-edit'></span>
+                                            <!-- <span class='fa fa-edit'></span> -->
                                             <span class='fa fa-trash'></span>
 
                                         </li>
@@ -70,7 +70,7 @@
                                    
                             </div>
                           </div>
-                          <h2><%= user.userName %> has <%= left %> things left to do.  <div class="fa-sharp fa-solid fa-up-right-and-down-left-from-center"></div></h2>
+                          <span class="page-bottom"><%= user.userName %> has <%= left %> things left to do.</span>
                                 <span class="page-bottom fa fa-print"></span> 
                         </div>
 
