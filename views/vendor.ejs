@@ -1,3 +1,5 @@
+</html>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,44 +52,46 @@
                     <!-- cards -->    
 
                     <div class="paper">
-                        <h2 class="title">To Do List</h2>
+                        <h2 class="title">Vendors</h2>
                         <div class="pattern">
                           <div id="content" class="content">
                                 
                             <ul>
-                                <% todos.forEach( el => { %>
+                                <% vendors.forEach( el => { %>
                                         <li class='todoItem' data-id='<%=el._id%>'>
-                                            <span class='<%= el.completed === true ? 'completed' : 'not'%>'>To Do:<%= el.todo %> <br> Notes:<%= el.note %> </span>
+                                            <span class='<%= el.completed === true ? 'confirmed' : 'noVendor'%>'>Name:<%= el.name %> 
+                                            <br>Type:<%= el.type %><br>Address:<%= el.address %>  <br>Tel:<%= el.number %> 
+                                            <br>Cost:<%= el.cost %></span>
                                             <br>
-                                            <!-- <span class='fa fa-edit'></span> -->
-                                            <span class='fa fa-trash'></span>
-
+                                            <!-- <span class='editVendor fa fa-edit'></span> -->
+                                            <span class='delVendor fa fa-trash'></span>
                                         </li>
-
-
                                 <% }) %>    
-                                </ul>
+                            </ul>
                                    
                             </div>
                           </div>
-                          <span class="page-bottom"><%= user.userName %> has <%= left %> things left to do.</span>
+                          <span class="page-bottom"><%= left %> Vendors Listed</span>
                                 <span class="page-bottom fa fa-print"></span> 
                         </div>
 
-
                         <!-- A button to open the popup form -->
-                    <button class="open-button" onclick="openForm()">Add To Do</button>
+                    <button class="open-button" onclick="openForm()">Add Vendor</button>
 
                     <div class="form-popup" id="myForm">
-                    <form action="/todos/createTodo" method='POST' class="form-container">
+                    <form action="/vendor/createVendor" method='POST' class="form-container">
 
-                        <input type="text" placeholder="Enter Todo Item" name='todoItem'>
-                        <input type="text" placeholder="Notes" name='note'></br>
-
-                    <button type="submit" class="btn">Add To Do</button>
+                        <input type="text" placeholder="Enter Vendor Name" name='name'>
+                        <input type="text" placeholder="Enter Vendor Address" name='address'>
+                        <input type="tel" placeholder="Enter Vendor Phone Number" name='number'>
+                        <input type="text" placeholder="Enter Vendor Type" name='type'>
+                        <input type="text" placeholder="Enter Vendor cost" name='cost'> </br>
+                        
+                    <button type="submit" class="btn">Add Vendor</button>
                     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
                     </form>
                     </div>
+
                     <footer>
                         <!-- <div class="footer-nav">
                             <a href="/home" class="footer-nav-link">Home</a>

@@ -10,7 +10,7 @@ A Simple Event Planning App is built using the MVC Architecture, we have also im
 
 # Objectives
 
-- It's a beginner level app created to understand how MVC concept and logins are added
+- It's a beginner level app event planning created to understand how MVC concept and logins are added
 
 ---
 
@@ -39,6 +39,13 @@ bcrypt, connect-mongo, dotenv, ejs, express, express-flash, express-session, mon
   - DB_STRING: `your database URI` 
  ---
  
+ # Future Enhancments
+
+  - Add update function for each list item
+  - Make the repeated functions DRY
+  - Add styling and cleaner layout
+  - Add Calander for tracking important dates
+ ---
  Have fun testing and improving it! 😎
 
 

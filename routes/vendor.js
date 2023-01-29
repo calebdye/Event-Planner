@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const vendorController = require('../controllers/vendors') 
+const vendorController = require('../controllers/vendor') 
 const { ensureAuth } = require('../middleware/auth')
 
 router.get('/', ensureAuth, vendorController.getVendors)

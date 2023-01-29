@@ -5,17 +5,24 @@ const Budget = require('../models/Budget')
 
 module.exports = {
     getTodos: async (req,res)=>{
+        console.log(req.user)
         try{
             const todoItems = await Todo.find({userId:req.user.id})
+            const vendorItems = await Vendor.find({userId:req.user.id})
+            const budgetItems = await Budget.find({userId:req.user.id})
+            const guestItems = await Guest.find({userId:req.user.id})
+            const confirmedGuest = await Guest.countDocuments({userId:req.user.id,completed: true})
+            const sum = await Budget.aggregate([{$match: {userId: req.user.id}},{$group: {_id:null, sum_val:{$sum:"$cost"}}}]) 
+            const sumGuests = await Guest.aggregate([{$match: {userId: req.user.id,completed: true}},{$group: {_id:null, sum_val:{$sum:"$num"}}}]) 
             const itemsLeft = await Todo.countDocuments({userId:req.user.id,completed: false})
-            res.render('todos.ejs', {todos: todoItems, left: itemsLeft, user: req.user, })
+            res.render('mainHome.ejs', {todos: todoItems, sumGuests:sumGuests, guestConfirmed:confirmedGuest, guests:guestItems, sum:sum, left: itemsLeft, user: req.user, vendor: vendorItems, budget: budgetItems})
         }catch(err){
             console.log(err)
         }
     },
     createTodo: async (req, res)=>{
         try{
-            await Todo.create({todo: req.body.todoItem, completed: false, userId: req.user.id, note:req.body.note})
+            await Todo.create({todo: req.body.todoItem, completed: false, userId: req.user.id})
             console.log('Todo has been added!')
             res.redirect('/todos')
         }catch(err){
@@ -47,7 +54,7 @@ module.exports = {
     editTodo: async (req, res)=>{
         try{
             await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
-                todo: todoValue
+                todo: req.body.todoValue
             })
             console.log('Marked Complete')
             res.json('Marked Complete')

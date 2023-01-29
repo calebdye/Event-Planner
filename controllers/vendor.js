@@ -5,9 +5,10 @@ module.exports = {
     getVendors: async (req,res)=>{
         console.log(req.user)
         try{
+    
             const vendors = await Vendor.find({userId:req.user.id})
             const itemsLeft = await Vendor.countDocuments({userId:req.user.id,completed: false})
-            // res.render('vendor.ejs', {vendors: vendors, left: itemsLeft, user: req.user})
+             res.render('vendor.ejs', {vendors: vendors, left: itemsLeft, user: req.user})
         }catch(err){
             console.log(err)
         }
@@ -16,8 +17,8 @@ module.exports = {
         try{
             await Vendor.create({name: req.body.name, completed: false, userId: req.user.id, address:req.body.address, type: req.body.type, number:req.body.number, cost:req.body.cost})
             console.log('Vendor has been added!')
-            res.redirect('/todos')//Refreshing todos because that is where this data is being pulled currently
-        }catch(err){
+            res.redirect('back');
+                }catch(err){
             console.log(err)
         }
     },
@@ -46,7 +47,8 @@ module.exports = {
     editVendor: async (req, res)=>{
         try{
             await Vendor.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
-                todo: req.body.vendors
+                todo: req.body.vendors,
+                address: req.body.addressValue
             })
             console.log('Marked Complete')
             res.json('Marked Complete')

@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const BudgetSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
+    required: true
   },
   completed: {
     type: Boolean,
@@ -17,10 +17,15 @@ const BudgetSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  goal: {
+    goal: {
     type: Number,
-    required: true
-  }
+    required: false,
+  },
+  note: {
+  type: String,
+  required: false,
+}
 })
 
 module.exports = mongoose.model('Budget', BudgetSchema)
+

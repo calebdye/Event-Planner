@@ -6,16 +6,18 @@ module.exports = {
         try{
             const guest = await Guest.find({userId:req.user.id})
             const itemsLeft = await Guest.countDocuments({userId:req.user.id,completed: true})
-            res.render('guest.ejs', {Guests: guest, left: itemsLeft, user: req.user, address: req.address, num:req.body.num})
+            const sumGuests = await Guest.aggregate([{$match: {userId: req.user.id,completed: true}},{$group: {_id:null, sum_val:{$sum:"$num"}}}]) 
+            res.render('guest.ejs', {guests: guest, sumGuests:sumGuests, left: itemsLeft, user: req.user, address: req.address, num:req.body.num})
         }catch(err){
             console.log(err)
         }
     },
     createGuest: async (req, res)=>{
         try{
-            await Guest.create({guest: req.body.guest, completed: false, userId: req.user.id, address: req.body.address, num:req.body.num})
+            await Guest.create({guest: req.body.guest, notes:req.body.notes, completed: false, userId: req.user.id, address: req.body.address, num:req.body.num})
             console.log('Guest has been added!')
-            res.redirect('/guest')
+            //  res.redirect('/guest')
+            res.redirect('back');
         }catch(err){
             console.log(err)
             console.log('errrrrrr')
@@ -47,7 +49,9 @@ module.exports = {
         try{
             await Guest.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
                 guest: req.body.todoValue,
-                address: req.body.addressValue
+                address: req.body.addressValue,
+                num: req.body.newNum,
+                notes: req.body.newNotes
             })
             console.log('Marked Complete')
             res.json('Marked Complete')
