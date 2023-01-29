@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
-const GuestSchema = new mongoose.Schema({
-  guest: {
+const VendorSchema = new mongoose.Schema({
+  name: {
     type: String,
     required: true,
   },
@@ -17,14 +17,19 @@ const GuestSchema = new mongoose.Schema({
     type: String,
     required: false
   },
-  num: {
-    type: Number,
-    required: false
-  },
-  notes:{
+  type: {
     type: String,
     required: false
+  },
+  number: {
+    type: String,
+    required: false
+  },
+  cost: {
+    type: Number,
+    required: false
   }
+
 })
 
-module.exports = mongoose.model('Guest', GuestSchema)
+module.exports = mongoose.model('Vendor', VendorSchema)
