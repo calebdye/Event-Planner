@@ -1,3 +1,5 @@
+</html>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,41 +52,42 @@
                     <!-- cards -->    
 
                     <div class="paper">
-                        <h2 class="title">Guest List</h2>
+                        <h2 class="title">Costs</h2>
                         <div class="pattern">
                           <div id="content" class="content">
                                 
-                                <ul>
-                                    <% guests.forEach( el => { %>
-                                            <li class='guest' data-id='<%=el._id%>'>
-                                                <span class='<%= el.completed === true ? 'confirmed' : 'noGuest'%>'>Name:<%= el.guest %> <br> Address: <%= el.address %> <br> Party Size: <%= el.num %> <br> Notes:<%= el.notes %></span>
-                                                <br>
-                                                <span class='editGuest fa fa-edit'></span>
-                                                <span class='delGuest fa fa-trash'></span>
-                                            </li>
-                                    <% }) %>    
-                                    </ul>
+                            <ul>
+                                <% budget.forEach( el => { %>
+                                    <li class='todoItem' data-id='<%=el._id%>'>
+                                        <span class='<%= el.completed === true ? 'confirmed' : 'notBudget'%>'>Name:<%= el.name %> 
+                                        <br>Cost:<%= el.cost %><br>Notes:<%= el.note %></span>
+                                        <br>
+                                        <span class='editBudget fa fa-edit'></span>
+                                        <span class='delBudget fa fa-trash'></span>
+                                    </li>
+                        <% }) %>       
+                                </ul>
                                    
                             </div>
                           </div>
-                            <% sumGuests.forEach( el => { %>
-                                <span class="page-bottom"><%= el.sum_val %> guests confirmed</span>
-                                <% }) %> 
+                          <% sum.forEach( el => { %>
+                            <span class="page-bottom">Total Costs: $<%= el.sum_val %> </span>
+                                    <% }) %>  
                                 <span class="page-bottom fa fa-print"></span> 
                         </div>
 
                         <!-- A button to open the popup form -->
-                    <button class="open-button" onclick="openForm()">Add Guest</button>
+                    <button class="open-button" onclick="openForm()">Add Cost</button>
 
                     <div class="form-popup" id="myForm">
-                    <form action="/guest/createGuest" method='POST' class="form-container">
+                    <form action="/budget/createBudget" method='POST' class="form-container">
 
-                        <input type="text" placeholder="Enter Guest Name" name='guest'>
-                        <input type="text" placeholder="Enter Address" name='address'>
-                        <input type="number" placeholder="Enter # of Guests" name='num'>
-                        <input type="text" placeholder="Notes" name='notes'></br>
-
-                    <button type="submit" class="btn">Add Guest</button>
+                        <input type="text" placeholder="Enter Cost Description" name='name'>
+                        <input type="number" placeholder="Enter Cost" name='cost'>
+                        <input type="text" placeholder="Enter Notes" name='note'>                        
+                    </br>
+                        
+                    <button type="submit" class="btn">Add Cost</button>
                     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
                     </form>
                     </div>

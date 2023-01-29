@@ -9,151 +9,100 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
+                <!-- Nav list -->
+                
+                <header>
+                    <div class="conainer">
+                        <nav>
+                            <div class="burger-menu-icon">
+                                <div class="line1"></div>
+                                <div class="line2"></div>
+                                <div class="line3"></div>
+                            </div>
+                            <ul class="nav-list">
+                 
+                                <li class="nav-item">
+                                    <a href="/logout" class="nav-link">Logout</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/mainHome" class="nav-link">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/todos" class="nav-link">To Do List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/guest" class="nav-link">Guest List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/vendor" class="nav-link">Vendor List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/budget" class="nav-link">Cost Tracker</a>
+                                </li>
+                
+                            </ul>
+                        </nav>
+                    </div>
+                </header>
+                
+                <body>
+                    <h1>Event Planner</h1>
+                    <!-- cards -->    
 
-<!-- Nav list -->
+                    <div class="paper">
+                        <h2 class="title">To Do List</h2>
+                        <div class="pattern">
+                          <div id="content" class="content">
+                                
+                            <ul>
+                                <% todos.forEach( el => { %>
+                                        <li class='todoItem' data-id='<%=el._id%>'>
+                                            <span class='<%= el.completed === true ? 'completed' : 'not'%>'>To Do:<%= el.todo %> <br> Notes:<%= el.note %> </span>
+                                            <br>
+                                            <span class='fa fa-edit'></span>
+                                            <span class='fa fa-trash'></span>
 
-<header>
-    <div class="conainer">
-        <nav>
-            <div class="burger-menu-icon">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
-            <ul class="nav-list">
- 
-                <li class="nav-item">
-                    <a href="/logout" class="nav-link">Logout</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/todos" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/guest" class="nav-link">Guest List</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/vendor" class="nav-link">Vendor List</a>
-                </li>
-                <!-- <li class="nav-item">
-                    <a href="/budget" class="nav-link">Cost Tracker</a>
-                </li> -->
-
-            </ul>
-        </nav>
-    </div>
-</header>
-
-<body>
-    <h1>Event Planner</h1>
-    <!-- cards -->
-    <div class="card">
-        <h2>To Do List</h2>
-        <ul>
-            <% todos.forEach( el => { %>
-                    <li class='todoItem' data-id='<%=el._id%>'>
-                        <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                        <span class='edit fa fa-edit'></span>
-                        <span class='del fa fa-trash'></span>
-                    </li>
-            <% }) %>    
-            </ul>
-        <div class="text">
-            <h2><%= user.userName %> has <%= left %> things left to do.  <div class="fa-sharp fa-solid fa-up-right-and-down-left-from-center"></div></h2>
-        </div>
-        <div class="fa-sharp fa-solid fa-up-right-and-down-left-from-center"></div>
-        <form action="/todos/createTodo" method='POST'>
-            <input type="text" placeholder="Enter Todo Item" name='todoItem'>
-            <input type="submit">
-        </form>
-    </div>
-<hr>
+                                        </li>
 
 
-    <div class="card">
-        <h2><a href="/vendor">Vendor List </a></h2>
-        <ul>
-            <% vendor.forEach( el => { %>
-                    <li class='todoItem' data-id='<%=el._id%>'>
-                        <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.name %> <%= el.type %> </span>
-                        <span class='editVendor fa fa-edit'></span>
-                        <span class='delVendor fa fa-trash'></span>
-                    </li>
-            <% }) %>    
-            </ul>
-        <div class="text">
-            <!-- <h2><%= user.userName %> has <%= left %> things left to do. </h2> -->
-        </div>
-        <form action="/vendors/createVendor" method='POST'>
-            <input type="text" placeholder="Enter Vendor Name" name='name'>
-            <input type="text" placeholder="Enter Vendor Address" name='address'>
-            <input type="text" placeholder="Enter Vendor Phone Number" name='number'>
-            <input type="text" placeholder="Enter Vendor Type" name='type'>
-            <input type="text" placeholder="Enter Vendor cost as total" name='cost'> </br>
-            <input type="submit">
-        </form>
-    </div>
-    <hr>
-    <div class="card">
-        <h2>Cost Tracker</h2>
-        <ul>
-            <% budget.forEach( el => { %>
-                <li class='todoItem' data-id='<%=el._id%>'>
-                    <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.name %> <%= el.cost %> </span>
-                    <span class='editBudget fa fa-edit'></span>
-                    <span class='delBudget fa fa-trash'></span>
-                </li>
-    <% }) %>       
-            </ul>
-        <div class="text">
-            <% sum.forEach( el => { %>
-        <h2>Total Costs: $<%= el.sum_val %> </h2>
-                <% }) %>  
-        </div>
-        <form action="/budget/createBudget" method='POST'>
-            <input type="text" placeholder="Enter Cost Description" name='name'>
-            <input type="number" placeholder="Enter Cost" name='cost'> </br>
-            <input type="submit">
-        </form>
-    </div>
+                                <% }) %>    
+                                </ul>
+                                   
+                            </div>
+                          </div>
+                          <h2><%= user.userName %> has <%= left %> things left to do.  <div class="fa-sharp fa-solid fa-up-right-and-down-left-from-center"></div></h2>
+                                <span class="page-bottom fa fa-print"></span> 
+                        </div>
 
-    <hr>
 
-    <div class="card">
-        <a href="/guest">
-        <h2>Guest List</h2>
-        <ul>
-            <% guests.forEach( el => { %>
-                    <li class='guest' data-id='<%=el._id%>'>
-                        <span class='<%= el.completed === true ? 'confirmed' : 'noGuest'%>'><%= el.guest %> </br>Party Size: <%= el.num %></span>
-                        <span class='editGuest fa fa-edit'></span>
-                        <span class='delGuest fa fa-trash'></span>
-                    </li>
-            <% }) %>    
-            </ul>
-        <div class="text">
-            <% sumGuests.forEach( el => { %>
-                <h2><%= user.userName %> has <%= el.sum_val %> guests confirmed.</h2>
-                        <% }) %>  
-        </div>
-    </a>
-    </div>
+                        <!-- A button to open the popup form -->
+                    <button class="open-button" onclick="openForm()">Add To Do</button>
 
-    <hr>
+                    <div class="form-popup" id="myForm">
+                    <form action="/todos/createTodo" method='POST' class="form-container">
 
-    <footer>
-        <div class="footer-nav">
-            <a href="/todos" class="footer-nav-link">Home</a>
-            <a href="/todos" class="footer-nav-link">To-Do's</a>
-            <a href="/vendor" class="footer-nav-link">Vendors</a>
-            <a href="/budget" class="footer-nav-link">Cost-Tracker</a>
-            <a href="/guest" class="footer-nav-link">Guest-list</a>
+                        <input type="text" placeholder="Enter Todo Item" name='todoItem'>
+                        <input type="text" placeholder="Notes" name='note'></br>
 
-        </div>
-        <div class="footer-coded-by">
-            <p><i class="fas fa-code"></i> by Caleb Dye &copy; 2022</p>
-            <p>Built with HTML, CSS and JavaScript</p>
-        </div>
-      </footer>
-    <script src="js/main.js"></script>
+                    <button type="submit" class="btn">Add To Do</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                    </form>
+                    </div>
+                    <footer>
+                        <!-- <div class="footer-nav">
+                            <a href="/home" class="footer-nav-link">Home</a>
+                            <a href="/todos" class="footer-nav-link">To-Do's</a>
+                            <a href="/vendor" class="footer-nav-link">Vendors</a>
+                            <a href="/budget" class="footer-nav-link">Cost-Tracker</a>
+                            <a href="/guest" class="footer-nav-link">Guest-list</a>
+
+                        </div> -->
+                        <div class="footer-coded-by">
+                            <p><i class="fas fa-code"></i> by Caleb Dye &copy; 2022</p>
+                        </div>
+                      </footer>
+
+                    <script src="js/main.js"></script>
+
 </body>
 </html>

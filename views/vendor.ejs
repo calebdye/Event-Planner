@@ -1,3 +1,5 @@
+</html>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,10 +27,13 @@
                                     <a href="/logout" class="nav-link">Logout</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/guest" class="nav-link">Guest List</a>
+                                    <a href="/mainHome" class="nav-link">Home</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/todos" class="nav-link">To Do List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/guest" class="nav-link">Guest List</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/vendor" class="nav-link">Vendor List</a>
@@ -45,38 +50,59 @@
                 <body>
                     <h1>Event Planner</h1>
                     <!-- cards -->    
-                    <div class="card card2">
-                        <h2><a href="/vendor">Vendor List </a></h2>
-                        <ul>
-                            <% vendors.forEach( el => { %>
-                                    <li class='todoItem' data-id='<%=el._id%>'>
-                                        <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.name %> <%= el.type %> </span>
-                                        <span class='edit fa fa-edit'></span>
-                                        <span class='del fa fa-trash'></span>
-                                    </li>
-                            <% }) %>    
+
+                    <div class="paper">
+                        <h2 class="title">Vendors</h2>
+                        <div class="pattern">
+                          <div id="content" class="content">
+                                
+                            <ul>
+                                <% vendors.forEach( el => { %>
+                                        <li class='todoItem' data-id='<%=el._id%>'>
+                                            <span class='<%= el.completed === true ? 'confirmed' : 'noVendor'%>'>Name:<%= el.name %> 
+                                            <br>Type:<%= el.type %><br>Address:<%= el.address %>  <br>Tel:<%= el.number %> 
+                                            <br>Cost:<%= el.cost %></span>
+                                            <br>
+                                            <span class='editVendor fa fa-edit'></span>
+                                            <span class='delVendor fa fa-trash'></span>
+                                        </li>
+                                <% }) %>    
                             </ul>
-                            <form action="/vendors/createVendor" method='POST'>
-                                <input type="text" placeholder="Enter Vendor Name" name='name'>
-                                <input type="text" placeholder="Enter Vendor Address" name='address'>
-                                <input type="text" placeholder="Enter Vendor Phone Number" name='number'>
-                                <input type="text" placeholder="Enter Vendor Type" name='type'>
-                                <input type="text" placeholder="Enter Vendor cost as total" name='cost'> </br>
-                                <input type="submit">
-                            </form>
+                                   
+                            </div>
+                          </div>
+                          <span class="page-bottom"><%= left %> Vendors Listed</span>
+                                <span class="page-bottom fa fa-print"></span> 
+                        </div>
+
+                        <!-- A button to open the popup form -->
+                    <button class="open-button" onclick="openForm()">Add Vendor</button>
+
+                    <div class="form-popup" id="myForm">
+                    <form action="/vendor/createVendor" method='POST' class="form-container">
+
+                        <input type="text" placeholder="Enter Vendor Name" name='name'>
+                        <input type="text" placeholder="Enter Vendor Address" name='address'>
+                        <input type="tel" placeholder="Enter Vendor Phone Number" name='number'>
+                        <input type="text" placeholder="Enter Vendor Type" name='type'>
+                        <input type="text" placeholder="Enter Vendor cost" name='cost'> </br>
+                        
+                    <button type="submit" class="btn">Add Vendor</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                    </form>
                     </div>
 
                     <footer>
-                        <div class="footer-nav">
-                            <a href="/todos" class="footer-nav-link">Home</a>
+                        <!-- <div class="footer-nav">
+                            <a href="/home" class="footer-nav-link">Home</a>
                             <a href="/todos" class="footer-nav-link">To-Do's</a>
                             <a href="/vendor" class="footer-nav-link">Vendors</a>
                             <a href="/budget" class="footer-nav-link">Cost-Tracker</a>
                             <a href="/guest" class="footer-nav-link">Guest-list</a>
-                        </div>
+
+                        </div> -->
                         <div class="footer-coded-by">
                             <p><i class="fas fa-code"></i> by Caleb Dye &copy; 2022</p>
-                            <p>Built with HTML, CSS and JavaScript</p>
                         </div>
                       </footer>
 

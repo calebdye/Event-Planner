@@ -5,6 +5,7 @@ module.exports = {
     getVendors: async (req,res)=>{
         console.log(req.user)
         try{
+    
             const vendors = await Vendor.find({userId:req.user.id})
             const itemsLeft = await Vendor.countDocuments({userId:req.user.id,completed: false})
              res.render('vendor.ejs', {vendors: vendors, left: itemsLeft, user: req.user})

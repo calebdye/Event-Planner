@@ -20,7 +20,11 @@ const BudgetSchema = new mongoose.Schema({
     goal: {
     type: Number,
     required: false,
-  }
+  },
+  note: {
+  type: String,
+  required: false,
+}
 })
 
 module.exports = mongoose.model('Budget', BudgetSchema)

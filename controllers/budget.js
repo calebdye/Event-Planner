@@ -5,18 +5,20 @@ module.exports = {
     getBudget: async (req,res)=>{
         console.log(req.user)
         try{
+            const sum = await Budget.aggregate([{$match: {userId: req.user.id}},{$group: {_id:null, sum_val:{$sum:"$cost"}}}]) 
             const budgetItem = await Budget.find({userId:req.user.id})
             //const itemsLeft = await Vendor.countDocuments({userId:req.user.id,completed: false})
-            // res.render('vendor.ejs', {vendors: vendors, left: itemsLeft, user: req.user})
+             res.render('budget.ejs', {budget: budgetItem, sum: sum, user: req.user})
         }catch(err){
             console.log(err)
         }
     },
     createBudget: async (req, res)=>{
         try{
-            await Budget.create({name: req.body.name, completed: false, cost:req.body.cost, userId: req.user.id, goal:req.body.goal})
+            await Budget.create({name: req.body.name, completed: false, cost:req.body.cost, userId: req.user.id, goal:req.body.goal, note: req.body.note})
             console.log('Vendor has been added!')
-            res.redirect('/todos')//Refreshing todos because that is where this data is being pulled currently
+            res.redirect('back');
+            //res.redirect('/todos')//Refreshing todos because that is where this data is being pulled currently
         }catch(err){
             console.log(err)
         }
