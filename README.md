@@ -6,7 +6,7 @@ A Simple Event Planning App is built using the MVC Architecture, we have also im
 
 > Be sure to add that lovely star 😀 and fork it for your own copy
 
-![alt tag](https://giphy.com/embed/wV6jOzEx3gSC4oSwms)
+![alt tag]([https://giphy.com/embed/wV6jOzEx3gSC4oSwms](https://media.giphy.com/media/wV6jOzEx3gSC4oSwms/giphy.gif))
 
 ---
 
