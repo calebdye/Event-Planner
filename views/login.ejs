@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 class="head">Plan an event now!</h1>
+    
+    <div class="card card3 card4">
+        <h2>Sign In</h2>
+        <% if (locals.messages.errors) { %>
+            <% messages.errors.forEach( el => { %>
+                <div class="alert alert-danger"><%= el.msg %></div>
+            <% }) %>    
+        <% } %>
+        <% if (locals.messages.info) { %>
+            <% messages.info.forEach( el => { %>
+                <div class="alert alert-danger"><%= el.msg %></div>
+            <% }) %>    
+        <% } %>
+        <form class ='log' action="/login" method="POST">
+            <h3>Email</h3>
+            <input type="email" name="email" placeholder="Email">
+            <h3>Password</h3>
+            <input type="password" name="password" placeholder="Password">
+            <input class="but" type="submit">
+        </form>
+    </div>
+    <footer class="bottom">
+        <!-- <div class="footer-nav">
+            <a href="/home" class="footer-nav-link">Home</a>
+            <a href="/todos" class="footer-nav-link">To-Do's</a>
+            <a href="/vendor" class="footer-nav-link">Vendors</a>
+            <a href="/budget" class="footer-nav-link">Cost-Tracker</a>
+        </div> -->
+        <div class="footer-coded-by">
+            <p><i class="fas fa-code"></i> by Caleb Dye &copy; 2022</p>
+        </div>
+      </footer>
+
+</body>
+
+</html>

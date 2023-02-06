@@ -1,0 +1,176 @@
+
+
+<!-- Template -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+                <!-- Nav list -->
+                
+                <header>
+                    <div class="conainer">
+                        <nav>
+                            <div class="burger-menu-icon">
+                                <div class="line1"></div>
+                                <div class="line2"></div>
+                                <div class="line3"></div>
+                            </div>
+                            <ul class="nav-list">
+                 
+                                <li class="nav-item">
+                                    <a href="/logout" class="nav-link">Logout</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/mainHome" class="nav-link">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/todos" class="nav-link">To Do List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/guest" class="nav-link">Guest List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/vendor" class="nav-link">Vendor List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/budget" class="nav-link">Cost Tracker</a>
+                                </li>
+                
+                            </ul>
+                        </nav>
+                    </div>
+                </header>
+                
+                <body>
+                    <h1>Event Planner</h1>
+                    <!-- cards -->    
+
+                    <div class="paper">
+                        <h2 class="title">To Do List</h2>
+                        <div class="pattern"> <a href="/todos">
+                          <div class="content">
+                            
+                            <ul>
+                                <% todos.forEach( el => { %>
+                                        <li class='todoItem' data-id='<%=el._id%>'>
+                                            <span class='<%= el.completed === true ? 'completed' : 'not'%>'>To Do:<%= el.todo %> <br> Notes:<%= el.note %> </span>
+                                            <br>
+                                            <!-- <span class='edit fa fa-edit'></span>
+                                            <span class='del fa fa-trash'></span> -->
+                                        </li>
+                                <% }) %>    
+                                </ul>
+                                   
+                            </div>
+                        </a> </div>
+                          <span class="page-bottom"><%= user.userName %> has <%= left %> things left to do.</span>
+                                <!-- <span class="page-bottom fa fa-print"></span>  -->
+                        </div>
+                <hr>
+                        <!-- vendor-->
+
+                        <div class="paper">
+                            <h2 class="title">Vendors</h2>
+                            <div class="pattern"> <a href="/vendor">
+                              <div class="content">
+                                    
+                                <ul>
+                                    <% vendor.forEach( el => { %>
+                                            <li class='todoItem' data-id='<%=el._id%>'>
+                                                <span class='<%= el.completed === true ? 'confirmed' : 'noVendor'%>'>Name:<%= el.name %> 
+                                                <br>Type:<%= el.type %><br>Address:<%= el.address %>  <br>Tel:<%= el.number %> 
+                                                <br>Cost:<%= el.cost %></span>
+                                                <br>
+                                                <!-- <span class='editVendor fa fa-edit'></span>
+                                                <span class='delVendor fa fa-trash'></span> -->
+                                            </li>
+                                    <% }) %>    
+                                </ul>
+                                       
+                                </div>
+                            </a>  </div>
+                              <span class="page-bottom"><%= left %> Vendors Listed</span>
+                                    <!-- <span class="page-bottom fa fa-print"></span>  -->
+                            </div>
+                <hr>
+                            <!-- Guest -->
+                    
+                            <div class="paper">
+                                <h2 class="title">Guest List</h2>
+                                <div class="pattern"> <a href="/guest">
+                                  <div class="content">
+                                        
+                                        <ul>
+                                            <% guests.forEach( el => { %>
+                                                    <li class='guest' data-id='<%=el._id%>'>
+                                                        <span class='<%= el.completed === true ? 'confirmed' : 'noGuest'%>'>Name:<%= el.guest %> <br> Address: <%= el.address %> <br> Party Size: <%= el.num %> <br> Notes:<%= el.notes %></span>
+                                                        <br>
+                                                        <!-- <span class='editGuest fa fa-edit'></span>
+                                                        <span class='delGuest fa fa-trash'></span> -->
+                                                    </li>
+                                            <% }) %>    
+                                            </ul>
+                                           
+                                    </div>
+                                </a>  </div>
+                                    <% sumGuests.forEach( el => { %>
+                                        <span class="page-bottom"><%= el.sum_val %> guests confirmed</span>
+                                        <% }) %> 
+                                        <!-- <span class="page-bottom fa fa-print"></span>  -->
+                                </div>
+                              
+                                <!-- Costs -->
+                <hr>
+                                <div class="paper">
+                                    <h2 class="title">Costs</h2>
+                                    <div class="pattern"> <a href="/budget">
+                                      <div class="content">
+                                            
+                                        <ul>
+                                            <% budget.forEach( el => { %>
+                                                <li class='todoItem' data-id='<%=el._id%>'>
+                                                    <span class='<%= el.completed === true ? 'confirmed' : 'notBudget'%>'>Name:<%= el.name %> 
+                                                    <br>Cost:<%= el.cost %><br>Notes:<%= el.note %></span>
+                                                    <br>
+                                                    <!-- <span class='editBudget fa fa-edit'></span>
+                                                    <span class='delBudget fa fa-trash'></span> -->
+                                                </li>
+                                    <% }) %>       
+                                            </ul>
+                                               
+                                        </div>
+                                    </a> </div>
+                                      <% sum.forEach( el => { %>
+                                        <span class="page-bottom">Total Costs: $<%= el.sum_val %> </span>
+                                                <% }) %>  
+                                            <!-- <span class="page-bottom fa fa-print"></span>  -->
+                                    </div>
+                <hr>
+
+                    <footer>
+                        <!-- <div class="footer-nav">
+                            <a href="/home" class="footer-nav-link">Home</a>
+                            <a href="/todos" class="footer-nav-link">To-Do's</a>
+                            <a href="/vendor" class="footer-nav-link">Vendors</a>
+                            <a href="/budget" class="footer-nav-link">Cost-Tracker</a>
+                            <a href="/guest" class="footer-nav-link">Guest-list</a>
+
+                        </div> -->
+                        <div class="footer-coded-by">
+                            <p><i class="fas fa-code"></i> by Caleb Dye &copy; 2022</p>
+                        </div>
+                      </footer>
+
+                    <script src="js/main.js"></script>
+
+</body>
+</html>

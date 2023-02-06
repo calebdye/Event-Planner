@@ -1,0 +1,134 @@
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+                <!-- Nav list -->
+                
+                <header>
+                    <div class="conainer">
+                        <nav>
+                            <div class="burger-menu-icon">
+                                <div class="line1"></div>
+                                <div class="line2"></div>
+                                <div class="line3"></div>
+                            </div>
+                            <ul class="nav-list">
+                 
+                                <li class="nav-item">
+                                    <a href="/logout" class="nav-link">Logout</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/mainHome" class="nav-link">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/todos" class="nav-link">To Do List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/guest" class="nav-link">Guest List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/vendor" class="nav-link">Vendor List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/budget" class="nav-link">Cost Tracker</a>
+                                </li>
+                
+                            </ul>
+                        </nav>
+                    </div>
+                </header>
+                
+                <body>
+                    <h1>Event Planner</h1>
+                    <!-- cards -->    
+
+                    <div class="paper">
+                        <h2 class="title">Costs</h2>
+                        <div class="pattern">
+                          <div id="content" class="content">
+                                
+                            <ul>
+                                <% budget.forEach( el => { %>
+                                    <li class='todoItem' data-id='<%=el._id%>'>
+                                        <span class='<%= el.completed === true ? 'confirmed' : 'notBudget'%>'>Name:<%= el.name %> 
+                                        <br>Cost:<%= el.cost %><br>Notes:<%= el.note %></span>
+                                        <br>
+                                       
+                                        <form class="trash"
+                                        action="/budget/deleteBudget/<%= el._id %>?_method=DELETE"
+                                        method="POST"
+                                        >
+                                        <button class="fa fa-trash" type="submit"></button>
+                                        </form>
+       
+                                        <!-- Edit Buttons -->
+                                        <span  onclick="openForm2()" class="fa fa-edit"></span>
+    
+                                        <div class="editBox">
+                                            <form action="/budget/editBudget/<%= el._id %>?_method=PUT" method='POST' class="edit-container">
+                               
+                                                <input type="text" placeholder="Enter Cost Description" name='name'>
+                                                <input type="number" placeholder="Enter Cost" name='cost'>
+                                                <input type="text" placeholder="Enter Notes" name='note'>                        
+                                            </br>
+                                   
+                                            <button type="submit" class="btn">Update Cost</button>
+                                            <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
+                                            </form>
+                                        </div>
+
+                                    </li>
+                        <% }) %>       
+                                </ul>
+                                   
+                            </div>
+                          </div>
+                          <% sum.forEach( el => { %>
+                            <span class="page-bottom">Total Costs: $<%= el.sum_val %> </span>
+                                    <% }) %>  
+                                <span class="page-bottom fa fa-print"></span> 
+                        </div>
+
+                        <!-- A button to open the popup form -->
+                    <button class="open-button" onclick="openForm()">Add Cost</button>
+
+                    <div class="form-popup" id="myForm">
+                    <form action="/budget/createBudget" method='POST' class="form-container">
+
+                        <input type="text" placeholder="Enter Cost Description" name='name'>
+                        <input type="number" placeholder="Enter Cost" name='cost'>
+                        <input type="text" placeholder="Enter Notes" name='note'>                        
+                    </br>
+                        
+                    <button type="submit" class="btn">Add Cost</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                    </form>
+                    </div>
+
+                    <footer>
+                        <!-- <div class="footer-nav">
+                            <a href="/home" class="footer-nav-link">Home</a>
+                            <a href="/todos" class="footer-nav-link">To-Do's</a>
+                            <a href="/vendor" class="footer-nav-link">Vendors</a>
+                            <a href="/budget" class="footer-nav-link">Cost-Tracker</a>
+                            <a href="/guest" class="footer-nav-link">Guest-list</a>
+
+                        </div> -->
+                        <div class="footer-coded-by">
+                            <p><i class="fas fa-code"></i> by Caleb Dye &copy; 2022</p>
+                        </div>
+                      </footer>
+
+                    <script src="js/main.js"></script>
+
+</body>
+</html>
