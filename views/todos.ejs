@@ -59,8 +59,28 @@
                                         <li class='todoItem' data-id='<%=el._id%>'>
                                             <span class='<%= el.completed === true ? 'completed' : 'not'%>'>To Do:<%= el.todo %> <br> Notes:<%= el.note %> </span>
                                             <br>
-                                            <!-- <span class='fa fa-edit'></span> -->
-                                            <span class='fa fa-trash'></span>
+                                            
+                                            <!-- Delete button -->
+                                            <form class="trash"
+                                            action="/todos/deleteTodo/<%= el._id %>?_method=DELETE"
+                                            method="POST"
+                                            >
+                                            <button class="fa fa-trash" type="submit"></button>
+                                            </form>
+           
+                                            <!-- Edit Button and Form -->
+                                            <span  onclick="openForm2()" class="fa fa-edit"></span>
+           
+                                            <div class="editBox"> 
+                                                <form action="/todos/edTodo/<%= el._id %>?_method=PUT" method='POST' class="edit-container">
+                                
+                                                    <input type="text" placeholder="Enter Todo Item" name='todoItem'>
+                                                    <input type="text" placeholder="Notes" name='note'></br>
+                                           
+                                                    <button type="submit" class="btn">Update To-Do</button>
+                                                    <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
+                                                    </form>
+                                            </div>
 
                                         </li>
 

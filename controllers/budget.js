@@ -18,7 +18,6 @@ module.exports = {
             await Budget.create({name: req.body.name, completed: false, cost:req.body.cost, userId: req.user.id, goal:req.body.goal, note: req.body.note})
             console.log('Vendor has been added!')
             res.redirect('back');
-            //res.redirect('/todos')//Refreshing todos because that is where this data is being pulled currently
         }catch(err){
             console.log(err)
         }
@@ -48,13 +47,13 @@ module.exports = {
     },
     editBudget: async (req, res)=>{
         try{
-            await Budget.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
-                name: req.body.todoValue,
-                cost: req.body.cost
-                // Need to update -- need to try and get all edit and delete functions on the same  main.js, use css classes and seperate functions probably
+            await Budget.findOneAndUpdate({_id:req.params.id},{
+                name: req.body.name, 
+                cost:req.body.cost, 
+                goal:req.body.goal, 
+                note: req.body.note
             })
-            console.log('Marked Complete')
-            res.json('Marked Complete')
+            res.redirect('back')
         }catch(err){
             console.log(err)
         }

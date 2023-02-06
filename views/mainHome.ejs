@@ -56,9 +56,9 @@
 
                     <div class="paper">
                         <h2 class="title">To Do List</h2>
-                        <div class="pattern">
+                        <div class="pattern"> <a href="/todos">
                           <div class="content">
-                                
+                            
                             <ul>
                                 <% todos.forEach( el => { %>
                                         <li class='todoItem' data-id='<%=el._id%>'>
@@ -71,7 +71,7 @@
                                 </ul>
                                    
                             </div>
-                          </div>
+                        </a> </div>
                           <span class="page-bottom"><%= user.userName %> has <%= left %> things left to do.</span>
                                 <!-- <span class="page-bottom fa fa-print"></span>  -->
                         </div>
@@ -80,7 +80,7 @@
 
                         <div class="paper">
                             <h2 class="title">Vendors</h2>
-                            <div class="pattern">
+                            <div class="pattern"> <a href="/vendor">
                               <div class="content">
                                     
                                 <ul>
@@ -97,7 +97,7 @@
                                 </ul>
                                        
                                 </div>
-                              </div>
+                            </a>  </div>
                               <span class="page-bottom"><%= left %> Vendors Listed</span>
                                     <!-- <span class="page-bottom fa fa-print"></span>  -->
                             </div>
@@ -106,7 +106,7 @@
                     
                             <div class="paper">
                                 <h2 class="title">Guest List</h2>
-                                <div class="pattern">
+                                <div class="pattern"> <a href="/guest">
                                   <div class="content">
                                         
                                         <ul>
@@ -121,7 +121,7 @@
                                             </ul>
                                            
                                     </div>
-                                  </div>
+                                </a>  </div>
                                     <% sumGuests.forEach( el => { %>
                                         <span class="page-bottom"><%= el.sum_val %> guests confirmed</span>
                                         <% }) %> 
@@ -132,7 +132,7 @@
                 <hr>
                                 <div class="paper">
                                     <h2 class="title">Costs</h2>
-                                    <div class="pattern">
+                                    <div class="pattern"> <a href="/budget">
                                       <div class="content">
                                             
                                         <ul>
@@ -148,7 +148,7 @@
                                             </ul>
                                                
                                         </div>
-                                      </div>
+                                    </a> </div>
                                       <% sum.forEach( el => { %>
                                         <span class="page-bottom">Total Costs: $<%= el.sum_val %> </span>
                                                 <% }) %>  

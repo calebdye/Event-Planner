@@ -45,16 +45,15 @@ module.exports = {
             console.log(err)
         }
     },
-    editTodo: async (req, res)=>{
+    editGuest: async (req, res)=>{
         try{
-            await Guest.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
-                guest: req.body.todoValue,
-                address: req.body.addressValue,
-                num: req.body.newNum,
-                notes: req.body.newNotes
+            await Guest.findOneAndUpdate({_id:req.params.id},{
+                guest: req.body.guest, 
+                notes:req.body.notes, 
+                address: req.body.address, 
+                num:req.body.num
             })
-            console.log('Marked Complete')
-            res.json('Marked Complete')
+            res.redirect('back')
         }catch(err){
             console.log(err)
         }

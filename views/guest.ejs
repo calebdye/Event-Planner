@@ -59,8 +59,31 @@
                                             <li class='guest' data-id='<%=el._id%>'>
                                                 <span class='<%= el.completed === true ? 'confirmed' : 'noGuest'%>'>Name:<%= el.guest %> <br> Address: <%= el.address %> <br> Party Size: <%= el.num %> <br> Notes:<%= el.notes %></span>
                                                 <br>
-                                                <!-- <span class='editGuest fa fa-edit'></span> -->
-                                                <span class='delGuest fa fa-trash'></span>
+                                               
+                                                <form class="trash"
+                                                action="/guest/deleteGUest/<%= el._id %>?_method=DELETE"
+                                                method="POST"
+                                                >
+                                                <button class="fa fa-trash" type="submit"></button>
+                                                </form>
+               
+                                                <!-- Edit Buttons -->
+                                                <span  onclick="openForm2()" class="fa fa-edit"></span>
+                                                
+                                                <div class="editBox">
+                                                    <form action="/guest/editGuest/<%= el._id %>?_method=PUT" method='POST' class="edit-container">
+                                       
+                                                        <input type="text" placeholder="Enter Guest Name" name='guest'>
+                                                        <input type="text" placeholder="Enter Address" name='address'>
+                                                        <input type="number" placeholder="Enter # of Guests" name='num'>
+                                                        <input type="text" placeholder="Notes" name='notes'></br>
+                                           
+                                                    <button type="submit" class="btn">Update Guest</button>
+                                                    <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
+                                                    </form>
+                                                </div>
+
+
                                             </li>
                                     <% }) %>    
                                     </ul>

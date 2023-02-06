@@ -11,9 +11,9 @@ router.put('/markComplete', guestController.markComplete)
 
 router.put('/markIncomplete', guestController.markIncomplete)
 
-router.delete('/deleteBudget', guestController.deleteBudget)
+router.delete('/deleteBudget/:id', guestController.deleteBudget)
 
-router.put('/editBudget', guestController.editBudget)
+router.put('/editBudget/:id', guestController.editBudget)
 
 
 module.exports = router

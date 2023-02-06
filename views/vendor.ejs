@@ -63,8 +63,31 @@
                                             <br>Type:<%= el.type %><br>Address:<%= el.address %>  <br>Tel:<%= el.number %> 
                                             <br>Cost:<%= el.cost %></span>
                                             <br>
-                                            <!-- <span class='editVendor fa fa-edit'></span> -->
-                                            <span class='delVendor fa fa-trash'></span>
+
+                                            <form class="trash"
+                                            action="/vendor/deleteVendor/<%= el._id %>?_method=DELETE"
+                                            method="POST"
+                                            >
+                                            <button class="fa fa-trash" type="submit"></button>
+                                            </form>
+           
+                                            <!-- Edit Buttons -->
+                                            <span  onclick="openForm2()" class="fa fa-edit"></span>
+
+                                            <div class="editBox">
+                                                <form action="/vendor/editVendor/<%= el._id %>?_method=PUT" method='POST' class="edit-container">
+                                   
+                                                    <input type="text" placeholder="Enter Vendor Name" name='name'>
+                                                    <input type="text" placeholder="Enter Vendor Address" name='address'>
+                                                    <input type="tel" placeholder="Enter Vendor Phone Number" name='number'>
+                                                    <input type="text" placeholder="Enter Vendor Type" name='type'>
+                                                    <input type="text" placeholder="Enter Vendor cost" name='cost'> </br>
+                                       
+                                                <button type="submit" class="btn">Update To Do</button>
+                                                <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
+                                                </form>
+                                            </div>
+                                        
                                         </li>
                                 <% }) %>    
                             </ul>

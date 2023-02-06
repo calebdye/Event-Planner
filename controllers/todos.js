@@ -44,23 +44,23 @@ module.exports = {
             console.log(err)
         }
     },
-    editTodo: async (req, res)=>{
+    edTodo: async (req, res)=>{
         try{
-            await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
-                todo: todoValue
+            await Todo.findOneAndUpdate({_id:req.params.id},{
+                todo: req.body.todoItem,
+                note: req.body.note
             })
-            console.log('Marked Complete')
-            res.json('Marked Complete')
+            res.redirect('/todos')
         }catch(err){
             console.log(err)
         }
     },
     deleteTodo: async (req, res)=>{
-        console.log(req.body.todoIdFromJSFile)
         try{
-            await Todo.findOneAndDelete({_id:req.body.todoIdFromJSFile})
+            await Todo.findOneAndDelete({_id:req.params.id})
             console.log('Deleted Todo')
-            res.json('Deleted It')
+            //res.json('Deleted It')
+            res.redirect('back')
         }catch(err){
             console.log(err)
         }

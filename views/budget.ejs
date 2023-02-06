@@ -62,8 +62,30 @@
                                         <span class='<%= el.completed === true ? 'confirmed' : 'notBudget'%>'>Name:<%= el.name %> 
                                         <br>Cost:<%= el.cost %><br>Notes:<%= el.note %></span>
                                         <br>
-                                        <!-- <span class='editBudget fa fa-edit'></span> -->
-                                        <span class='delBudget fa fa-trash'></span>
+                                       
+                                        <form class="trash"
+                                        action="/budget/deleteBudget/<%= el._id %>?_method=DELETE"
+                                        method="POST"
+                                        >
+                                        <button class="fa fa-trash" type="submit"></button>
+                                        </form>
+       
+                                        <!-- Edit Buttons -->
+                                        <span  onclick="openForm2()" class="fa fa-edit"></span>
+    
+                                        <div class="editBox">
+                                            <form action="/budget/editBudget/<%= el._id %>?_method=PUT" method='POST' class="edit-container">
+                               
+                                                <input type="text" placeholder="Enter Cost Description" name='name'>
+                                                <input type="number" placeholder="Enter Cost" name='cost'>
+                                                <input type="text" placeholder="Enter Notes" name='note'>                        
+                                            </br>
+                                   
+                                            <button type="submit" class="btn">Update Cost</button>
+                                            <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
+                                            </form>
+                                        </div>
+
                                     </li>
                         <% }) %>       
                                 </ul>

@@ -13,6 +13,7 @@ const guestRoutes = require('./routes/guest')
 const vendorRoutes = require('./routes/vendor')
 const budgetRoutes = require('./routes/budget')
 const mainHomeRoutes = require('./routes/mainHome')
+const methodOverride = require("method-override");
 
 require('dotenv').config({path: './config/.env'})
 
@@ -36,6 +37,9 @@ app.use(
     })
   )
   
+//Use forms for put / delete
+app.use(methodOverride("_method"));
+
 // Passport middleware
 app.use(passport.initialize())
 app.use(passport.session())

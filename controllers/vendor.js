@@ -46,12 +46,14 @@ module.exports = {
     },
     editVendor: async (req, res)=>{
         try{
-            await Vendor.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
-                todo: req.body.vendors,
-                address: req.body.addressValue
+            await Vendor.findOneAndUpdate({_id:req.params.id},{
+                name: req.body.name, 
+                address:req.body.address, 
+                type: req.body.type, 
+                number:req.body.number, 
+                cost:req.body.cost
             })
-            console.log('Marked Complete')
-            res.json('Marked Complete')
+            res.redirect('back')
         }catch(err){
             console.log(err)
         }

@@ -11,8 +11,8 @@ router.put('/markComplete', vendorController.markComplete)
 
 router.put('/markIncomplete', vendorController.markIncomplete)
 
-router.delete('/deleteVendor', vendorController.deleteVendor)
+router.delete('/deleteVendor/:id', vendorController.deleteVendor)
 
-router.put('/editVendor', vendorController.editVendor)
+router.put('/editVendor/:id', vendorController.editVendor)
 
 module.exports = router

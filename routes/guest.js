@@ -11,9 +11,9 @@ router.put('/markComplete', guestController.markComplete)
 
 router.put('/markIncomplete', guestController.markIncomplete)
 
-router.delete('/deleteGuest', guestController.deleteGuest)
+router.delete('/deleteGuest/:id', guestController.deleteGuest)
 
-router.put('/editTodo', guestController.editTodo)
+router.put('/editGuest/:id', guestController.editGuest)
 
 
 module.exports = router
