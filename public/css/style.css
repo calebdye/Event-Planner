@@ -346,22 +346,25 @@ body {
 
 /* styling text content */
 .content {
-  padding-left: 56px;
-  padding-right: 16px;
-  line-height: 25px;
+   padding-left: 56px; 
+   padding-top: 1.8rem;
+  /* padding-right: 16px; */
+  /* line-height: 25px; */
   /* font-family: 'Dancing Script', cursive; */
-  font-size: 1.5rem;
-  letter-spacing: 1px;
-  word-spacing: 1px;
+  font-size: 1.3rem;
+  /* letter-spacing: 1px;
+  word-spacing: 1px; */
   max-height: 95%;
   overflow: auto;
+  display: flex;
+  text-align: left;
 }
 
 .content li{
   padding-bottom: 2rem;
   letter-spacing: .5rem;
   font-family: 'Shadows Into Light', cursive;
-  text-align: center;
+  /* text-align: center; */
 
 }
 
