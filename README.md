@@ -5,7 +5,6 @@ A Simple Event Planning App is built using the MVC Architecture, we have also im
 See a prototype here: https://eventplanner.cyclic.app/
 ---
 
-> Be sure to add that lovely star 😀 and fork it for your own copy
 
 ![alt tag](https://media.giphy.com/media/wV6jOzEx3gSC4oSwms/giphy.gif)
 
@@ -49,6 +48,5 @@ bcrypt, connect-mongo, dotenv, ejs, express, express-flash, express-session, mon
   - Add styling and cleaner layout
   - Add Calander for tracking important dates
  ---
- Have fun testing and improving it! 😎
 
 
